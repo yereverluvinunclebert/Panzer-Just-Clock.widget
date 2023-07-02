@@ -1,15 +1,18 @@
 # Panzer-Just-Clock.widget
 
- 
 Steampunk Desktop Just Clock  widget, written in Javascript and XML for the Yahoo 
 Widget (Konfabulator) Engine. Created for XP, Vista, Win7, 8, 10+ as well as the 
 Apple Mac.
+
+![justClock-image](https://github.com/yereverluvinunclebert/Panzer-Just-Clock.widget/assets/2788342/62d63250-69bd-4a8f-aea2-9df5258fbb58)
 
 An dieselpunk Panzer Clock widget - I created as a variation of the stopwatch 
 clock I had previously created for the World of Tanks and War Thunder 
 communities. The Panzer Just Clock widget is a pretty Yahoo widget for your desktop. 
 Functional and gorgeous at the same time. The graphics are my own, I took original inspiration from a clock face by Italo 
 Fortana. It is all my code with some solid help from Harry Whitfield. 
+
+![panzer-justclock-ywidget-di](https://github.com/yereverluvinunclebert/Panzer-Just-Clock.widget/assets/2788342/26a64120-154b-484f-9214-f355d69eebfa)
 
 Right clicking will bring up a menu of options. Double-clicking on the widget will cause a personalised Windows application to 
 fire up. The first time you run it there will be no assigned function and so it 
@@ -23,6 +26,8 @@ All javascript widgets need an engine to function, in this case the widget uses
 the Yahoo Widget Konfabulator engine. The engine interprets the javascript and 
 creates the widget according to the XML description and using the images you 
 provide. 
+
+![tank-help-750](https://github.com/yereverluvinunclebert/Panzer-Just-Clock.widget/assets/2788342/59f4cb08-faf5-45c3-b93b-fc8e8084d12d)
 
 This widget was created with the serious coding skills of Harry Whitfield. I 
 supplied the graphics, the original code, the concept and idea and steered the 
@@ -102,3 +107,4 @@ Tested on :
  With regard to the commercial use of incorporated images, permission and a
  licence would need to be obtained from the original owner and creator, ie. me.
  
+![about](https://github.com/yereverluvinunclebert/Panzer-Just-Clock.widget/assets/2788342/345d2842-ae8c-41b0-9730-45b0c37ba345)
