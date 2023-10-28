@@ -30,7 +30,6 @@
 		onFirstDisplay="mainWindow.hOffset = 10 + screen.availLeft; mainWindow.vOffset = 10 + screen.availTop; "
 		height="1024" shadow="0">
 		<image visible="true" vOffset="0" name="background" src="Resources/images/Background.png" hOffset="0"/>
-		<image visible="false" opacity="1" vOffset="0" name="background2" src="Resources/images/Background_mk1.png" hOffset="0"/>
 		<image visible="false" vOffset="0" name="surround" src="Resources/images/surround.png" hOffset="0"/>
 
 		<image visible="false" name="startButton" src="Resources/images/startButton.png"/>
@@ -123,13 +122,17 @@
 		<option>stopwatch</option>
 	</preference>
 
-	<preference hidden="false" group="general" description="Choose the timezone for the main clock. Defaults to the system time." name="optionListPref1" title="Main Gauge Time Zone:" defaultValue="System Time" type="popup">
-		<option>System Time</option>
-	</preference>
+  <preference hidden="false" group="general" description="Choose the timezone for the main clock. Defaults to the system time." name="optionListPref1" title="Main Gauge Time Zone:" defaultValue="System Time" type="popup">
+    <option>System Time</option>
+  </preference>
 
 	<preference hidden="false" group="general" description="If Daylight Saving is used in your region, choose the appropriate region from the popup list." name="mainDLSPref" title="Daylight Saving:" type="popup" defaultValue="NONE Daylight Saving not used">
 		<option>NONE   Daylight Saving not used</option>
 	</preference>
+
+  <preference hidden="false" group="general" description="Current total bias that will be applied to the current time based upon the timezone and daylight savings selection made, (read-only)." name="biasPref" title="Bias (mins)." defaultValue="0" type="text">
+    <option>System Time</option>
+  </preference>
 
 	<preference hidden="true" group="general" description="Choose the timezone for the secondary clock. Defaults to the GMT." name="optionListPref2" title="Secondary Gauge Time Zone:" defaultValue="GMT - 00:00 Greenwich Mean Time: London" type="popup">
 		<option>GMT - 00:00 Greenwich Mean Time: London</option>

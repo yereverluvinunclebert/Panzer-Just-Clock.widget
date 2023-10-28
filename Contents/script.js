@@ -41,7 +41,7 @@ var mainWindow, background, background2, surround, switchFacesButton, dateText, 
 
 var windowx = 785, windowy = 622;
 var backxo = 0, backyo = 0, backgroundxo = 0, backgroundyo = 0;
-var background2xo = 0, background2yo = 0;
+//var background2xo = 0, background2yo = 0;
 var surroundxo = 0, surroundyo = 0;
 var switchFacesButtonxo = 710, switchFacesButtonyo = 267;
 var startButtonxo = 710, startButtonyo = 135;
@@ -145,7 +145,7 @@ function sizeClock() {
 	mainWindow.height = Math.round(windowy * scale);
 
 	sc(background, backgroundxo, backgroundyo);
-	sc(background2, background2xo, background2yo);
+	//sc(background2, background2xo, background2yo);
 	sc(surround, surroundxo, surroundyo);
 	sc(switchFacesButton, switchFacesButtonxo, switchFacesButtonyo);
 	sc(startButton, startButtonxo, startButtonyo);
@@ -299,14 +299,28 @@ function updateTime() {
 			rotateAnimation(obj.rotation, value);
 		};
 
-	theDate = new Date();
+	// create a new date object
+    theDate = new Date();
 	optionListPref1 = preferences.optionListPref1.value;
 	if (optionListPref1 !== "System Time") {
+        
 		localGMTOffset = theDate.getTimezoneOffset();	// for UK this would be 0, for India it would be -330
-		if (!Number.isNaN(remoteGMTOffset1)) {
+//        print("%updateTime-I localGMTOffset  " + localGMTOffset);
+//        print("%updateTime-I remoteGMTOffset1  " + remoteGMTOffset1);
+		
+        if (!Number.isNaN(remoteGMTOffset1)) {
 			tzDelta = localGMTOffset + remoteGMTOffset1;
-			tzDelta += tzDelta1;
-			theDate.setTime(theDate.getTime() + 60000 * tzDelta);
+            //print("%updateTime-I tzDelta  localGMTOffset + remoteGMTOffset1 " + tzDelta);        
+			
+            //print("%updateTime-I tzDelta " + tzDelta);   
+            // now add the timezone delta obtained from any applicable rule     
+            tzDelta += tzDelta1;
+            
+            
+            print("%updateTime-I tzDelta " + tzDelta);        
+			
+            // set the date to the current time + the deviation converted to seconds
+            theDate.setTime(theDate.getTime() + 60000 * tzDelta);            
 		}
 	}
 
@@ -317,6 +331,7 @@ function updateTime() {
 		if (!Number.isNaN(remoteGMTOffset2)) {
 			tzDelta = localGMTOffset + remoteGMTOffset2;
 			tzDelta += tzDelta2;
+            preferences.biasPref.value = tzDelta;
 			theDate2.setTime(theDate2.getTime() + 60000 * tzDelta);
 		}
 	}

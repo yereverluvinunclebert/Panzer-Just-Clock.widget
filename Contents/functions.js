@@ -194,8 +194,8 @@ function showFace() {
     var scale = Number(preferences.clockSize.value) / 100;
 
     if (preferences.clockFaceSwitchPref.value === "stopwatch") {
-        background2.visible = true; //false by default
-        background2.opacity = 255;  //using opacity rather than visible property to maintain click-through
+        //background2.visible = true; //false by default
+        //background2.opacity = 255;  //using opacity rather than visible property to maintain click-through
         background.visible = false; //dual
         smallHourHand.visible = false;
         smallMinuteHand.visible = false;
@@ -218,7 +218,7 @@ function showFace() {
         secondText.visible = !isMac;
         secondTextArea.visible = isMac;
     } else {
-        background2.opacity = 1;    // a widget cannot mouse-through to a layer below so an alternative is to set opacity to 1. This allows
+        //background2.opacity = 1;    // a widget cannot mouse-through to a layer below so an alternative is to set opacity to 1. This allows
                                     // us to catch the ctrl+mousewheel event on the alternative face.
         background.visible = true;  //dual
         smallHourHand.visible = false;
