@@ -317,8 +317,8 @@ function updateTime() {
             tzDelta += tzDelta1;
             
             
-            print("%updateTime-I tzDelta " + tzDelta);        
-			
+            // print("%updateTime-I tzDelta " + tzDelta);        
+			preferences.biasPref.value = tzDelta;
             // set the date to the current time + the deviation converted to seconds
             theDate.setTime(theDate.getTime() + 60000 * tzDelta);            
 		}
@@ -331,7 +331,7 @@ function updateTime() {
 		if (!Number.isNaN(remoteGMTOffset2)) {
 			tzDelta = localGMTOffset + remoteGMTOffset2;
 			tzDelta += tzDelta2;
-            preferences.biasPref.value = tzDelta;
+            
 			theDate2.setTime(theDate2.getTime() + 60000 * tzDelta);
 		}
 	}
