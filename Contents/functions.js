@@ -23,10 +23,10 @@
 
 var mainWindow, switchFaces, prefs, till, mistake, helpButton, background2, background,
 		smallHourHand, smallMinuteHand, swSecondHand, swMinuteHand, swHourHand,
-		dateText, secondtextxo, secondtextyo, sizeClock,
-		pin, lock, stopWatchState, dateTextArea, datetextxo, datetextyo,
-		secondTextAreaxo, secondTextAreayo, dateTextAreaxo, dateTextAreayo,
-		secondTextArea, secondtextAreayo, secondText, aspectRatio, tingingSound,
+		dayOfMonthText, monthTextxo, monthTextyo, sizeClock,
+		pin, lock, stopWatchState, dayOfMonthTextArea, dayOfMonthTextxo, dayOfMonthTextyo,
+		monthTextAreaxo, monthTextAreayo, dayOfMonthTextAreaxo, dayOfMonthTextAreayo,
+		monthTextArea, monthTextAreayo, monthText, aspectRatio, tingingSound,
 		startButton, stopButton, switchFacesButton, tickSwitch;
 
 
@@ -204,19 +204,19 @@ function showFace() {
         swMinuteHand.visible = true;
         swHourHand.visible = true;
 
-        dateText.visible = false;
-        dateTextArea.visible = false;
-        dateText.tooltip = "";
-        dateTextArea.tooltip = "";
+        dayOfMonthText.visible = false;
+        dayOfMonthTextArea.visible = false;
+        dayOfMonthText.tooltip = "";
+        dayOfMonthTextArea.tooltip = "";
 
-        secondtextxo = 262;
-        secondtextyo = 322;
+        monthTextxo = 262;
+        monthTextyo = 322;
 
-        secondTextAreaxo = 246 + 8 * scale;	// mac only
-        secondTextAreayo = 302;
+        monthTextAreaxo = 246 + 8 * scale;	// mac only
+        monthTextAreayo = 302;
 
-        secondText.visible = !isMac;
-        secondTextArea.visible = isMac;
+        monthText.visible = !isMac;
+        monthTextArea.visible = isMac;
     } else {
         //background2.opacity = 1;    // a widget cannot mouse-through to a layer below so an alternative is to set opacity to 1. This allows
                                     // us to catch the ctrl+mousewheel event on the alternative face.
@@ -228,32 +228,32 @@ function showFace() {
         swMinuteHand.visible = false;
         swHourHand.visible = false;
 
-        dateText.visible = !isMac;
-        dateTextArea.visible = isMac;
+        dayOfMonthText.visible = !isMac;
+        dayOfMonthTextArea.visible = isMac;
         if (isMac) {
-            dateTextArea.tooltip = "The Date.";
+            dayOfMonthTextArea.tooltip = "The Date.";
         } else {
-            dateText.tooltip = "The Date.";
+            dayOfMonthText.tooltip = "The Date.";
         }
-        datetextxo = 527;
-        datetextyo = 416;
+        dayOfMonthTextxo = 527;
+        dayOfMonthTextyo = 416;
 
-        dateTextAreaxo = 508 + 8 * scale;	// mac only
-        dateTextAreayo = 394;
+        dayOfMonthTextAreaxo = 508 + 8 * scale;	// mac only
+        dayOfMonthTextAreayo = 394;
 
-        secondtextxo = 325;
-        secondtextyo = 210;
+        monthTextxo = 325;
+        monthTextyo = 210;
 
-        secondTextAreaxo = 308 + 8 * scale;	// mac only
-        secondTextAreayo = 190;
+        monthTextAreaxo = 308 + 8 * scale;	// mac only
+        monthTextAreayo = 190;
 
-        secondText.visible = !isMac;
-        secondTextArea.visible = isMac;
+        monthText.visible = !isMac;
+        monthTextArea.visible = isMac;
     }
     if (isMac) {
-        secondTextArea.tooltip = "The Seconds.";
+        monthTextArea.tooltip = "The Month.";
     } else {
-        secondText.tooltip = "The Seconds.";
+        monthText.tooltip = "The Month.";
     }
     sizeClock();
 }
@@ -266,16 +266,16 @@ function showFace() {
 //===========================================
 switchFacesButton.onMouseDown = function () {
     //print("clockfunction before "+ clockFunction);
-/*
-    if (preferences.clockFaceSwitchPref.value === "standard") {
-        preferences.clockFaceSwitchPref.value = "stopwatch";
-    } else {
-        preferences.clockFaceSwitchPref.value = "standard";
-    }
+
+//    if (preferences.clockFaceSwitchPref.value === "standard") {
+//        preferences.clockFaceSwitchPref.value = "stopwatch";
+//    } else {
+//        preferences.clockFaceSwitchPref.value = "standard";
+//    }
     if (preferences.soundPref.value !== "disabled") {
         play(till, false);
     }
-*/
+
     showFace();
 };
 //=====================

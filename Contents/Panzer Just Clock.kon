@@ -30,17 +30,17 @@
 		onFirstDisplay="mainWindow.hOffset = 10 + screen.availLeft; mainWindow.vOffset = 10 + screen.availTop; "
 		height="1024" shadow="0">
 		<image visible="true" vOffset="0" name="background" src="Resources/images/Background.png" hOffset="0"/>
-		<image visible="false" vOffset="0" name="surround" src="Resources/images/surround.png" hOffset="0"/>
+		<image visible="true" vOffset="0" name="surround" src="Resources/images/surround.png" hOffset="0"/>
 
-		<image visible="false" name="startButton" src="Resources/images/startButton.png"/>
-		<image visible="false" name="stopButton" src="Resources/images/startButton.png"/>
+		<image visible="true" name="startButton" src="Resources/images/startButton.png"/>
+		<image visible="true" name="stopButton" src="Resources/images/startButton.png"/>
 		<image name="switchFacesButton" src="Resources/images/startButton.png"/>
 
-		<text visible="false" font="Arial" color="#ECDAB4" name="dateText" alignment="left" style="font-weight:bold" data="31" size="20"/>
-		<text visible="false" font="Arial" color="#ECDAB4" name="secondText" alignment="left" style="font-weight:bold" data="31" size="20"/>
+		<text visible="false" font="Arial" color="#ECDAB4" name="dayOfMonthText" alignment="left" style="font-weight:bold" data="31" size="20"/>
+		<text visible="false" font="Arial" color="#ECDAB4" name="monthText" alignment="left" style="font-weight:bold" data="31" size="20"/>
 
-		<textArea visible="false" font="Arial" color="#ECDAB4" name="dateTextArea" alignment="left" style="font-weight:bold" data="31" size="20" editable="false"/>
-		<textArea visible="false" font="Arial" color="#ECDAB4" name="secondTextArea" alignment="left" style="font-weight:bold" data="31" size="20" editable="false"/>
+		<textArea visible="false" font="Arial" color="#ECDAB4" name="dayOfMonthTextArea" alignment="left" style="font-weight:bold" data="31" size="20" editable="false"/>
+		<textArea visible="false" font="Arial" color="#ECDAB4" name="monthTextArea" alignment="left" style="font-weight:bold" data="31" size="20" editable="false"/>
 
 		<image visible="false" name="swSecondHand" src="Resources/images/Small1B.png"/>
 		<image visible="false" name="swMinuteHand" src="Resources/images/Small1B.png"/>

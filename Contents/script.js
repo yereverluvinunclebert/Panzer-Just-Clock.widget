@@ -30,14 +30,14 @@
 
 "use strict";
 
-var mainWindow, background, background2, surround, switchFacesButton, dateText, secondText,
+var mainWindow, background, background2, surround, switchFacesButton, dayOfMonthText, monthText,
 		hourHand, hourShadow, minuteHand, minuteShadow, secondHand, secondShadow,
 		swMinuteHand, swHourHand, swSecondHand, bigReflection, windowReflection,
 		startButton, stopButton, pin, prefs, tankHelp, helpbutton, tickSwitch,
 		createLicense, setmenu, theDLSdelta, lprint, smallHourHand, smallMinuteHand,
 		helpButton, showFace, mainScreen, settooltip, checkLockWidget,
-		dateTextAresecondtextyoa, secondTextArea, theTimer, helpWindow, debugFlg, buildVitality,
-		updateRAM, performCommand, dateTextArea;
+		dayOfMonthTextAremonthTextyoa, monthTextArea, theTimer, helpWindow, debugFlg, buildVitality,
+		updateRAM, performCommand, dayOfMonthTextArea;
 
 var windowx = 785, windowy = 622;
 var backxo = 0, backyo = 0, backgroundxo = 0, backgroundyo = 0;
@@ -49,11 +49,17 @@ var stopButtonxo = 710, stopButtonyo = 395;
 var secondxo = 416, secondyo = 313, secondxr = 11.5, secondyr = 245.5;
 var secondshadowxo = 416, secondshadowyo = 313, secondshadowxr = 22.5, secondshadowyr = 260.5;
 
-var datetextxo = 527, datetextyo = 416;
-var secondtextxo = 321, secondtextyo = 210;
+//var dayOfMonthTextxo = 527, dayOfMonthTextyo = 416;
+//var monthTextxo = 321, monthTextyo = 210;
 
-var dateTextAreaxo = 516, dateTextAreayo = 394;
-var secondTextAreaxo = 316, secondTextAreayo = 190;
+var monthTextyo = 527, monthTextyo = 416;
+var dayOfMonthTextxo = 321, dayOfMonthTextxo = 210;
+
+//var dayOfMonthTextAreaxo = 516, dayOfMonthTextAreayo = 394;
+//var monthTextAreaxo = 316, monthTextAreayo = 190;
+
+var monthTextAreayo = 516, monthTextAreayo = 394;
+var dayOfMonthTextAreaxo = 316, dayOfMonthTextAreaxo = 190;
 
 var swSecondxo = 525, swSecondyo = 312, swSecondxr = 46.5, swSecondyr = 57;
 var swMinutexo = 416, swMinuteyo = 204, swMinutexr = swSecondxr, swMinuteyr = swSecondyr;
@@ -172,21 +178,21 @@ function sizeClock() {
 	sc(helpButton, helpButtonxo, helpButtonyo);
 	sc(tickSwitch, tickSwitchxo, tickSwitchyo);
 
-	dateText.size = Math.round(22 * scale);
-	dateText.hOffset = Math.round(datetextxo * scale);
-	dateText.vOffset = Math.round(datetextyo * scale);
+	dayOfMonthText.size = Math.round(22 * scale);
+	dayOfMonthText.hOffset = Math.round(dayOfMonthTextxo * scale);
+	dayOfMonthText.vOffset = Math.round(dayOfMonthTextyo * scale);
 
-	secondText.size = Math.round(22 * scale);
-	secondText.hOffset = Math.round(secondtextxo * scale);
-	secondText.vOffset = Math.round(secondtextyo * scale);
+	monthText.size = Math.round(22 * scale);
+	monthText.hOffset = Math.round(monthTextxo * scale);
+	monthText.vOffset = Math.round(monthTextyo * scale);
 
-	dateTextArea.size = Math.round(22 * scale);
-	dateTextArea.hOffset = Math.round(dateTextAreaxo * scale);
-	dateTextArea.vOffset = Math.round(dateTextAreayo * scale);
+	dayOfMonthTextArea.size = Math.round(22 * scale);
+	dayOfMonthTextArea.hOffset = Math.round(dayOfMonthTextAreaxo * scale);
+	dayOfMonthTextArea.vOffset = Math.round(dayOfMonthTextAreayo * scale);
 
-	secondTextArea.size = Math.round(22 * scale);
-	secondTextArea.hOffset = Math.round(secondTextAreaxo * scale);
-	secondTextArea.vOffset = Math.round(secondTextAreayo * scale);
+	monthTextArea.size = Math.round(22 * scale);
+	monthTextArea.hOffset = Math.round(monthTextAreaxo * scale);
+	monthTextArea.vOffset = Math.round(monthTextAreayo * scale);
 
 	if (preferences.soundPref.value !== "disabled") {
 		play(thhhh, false);
@@ -230,7 +236,7 @@ function updateTime() {
 		theSeconds,
 		theMilliseconds,
 		useSeconds,
-		monthDate,
+		dayOfMonth,
 		theDate2,
 		theHour2,
 		theMinutes2,
@@ -324,46 +330,22 @@ function updateTime() {
 		}
 	}
 
-	theDate2 = new Date();
-	optionListPref2 = preferences.optionListPref2.value;
-	if (optionListPref2 !== "System Time") {
-		localGMTOffset = theDate2.getTimezoneOffset();	 // for UK this would be 0, for India it would be -330
-		if (!Number.isNaN(remoteGMTOffset2)) {
-			tzDelta = localGMTOffset + remoteGMTOffset2;
-			tzDelta += tzDelta2;
-            
-			theDate2.setTime(theDate2.getTime() + 60000 * tzDelta);
-		}
-	}
+
 
 	theHour = theDate.getHours();
 	theMinutes = theDate.getMinutes();
 	theSeconds = theDate.getSeconds();
 	theMilliseconds = theDate.getMilliseconds();
 	useSeconds = Math.round(10 * (theSeconds + (theMilliseconds / 1000))) / 10;
-	monthDate = theDate.getDate();
+	dayOfMonth = theDate.getDate();
+    theMonth = theDate.getMonth() + 1;
 
 	if ((theMinutes % 15 === 0) && (theSeconds === 0) && (theMilliseconds < 100)) {
 		lprint("updating DLS: " + theDate.toString());
 		updateDLS();
 	}
 
-	theHour2 = theDate2.getHours();
-	theMinutes2 = theDate2.getMinutes();
-	theSeconds2 = theDate2.getSeconds();
-	theMilliseconds2 = theDate2.getMilliseconds();
-	useSeconds2 = Math.round(10 * (theSeconds2 + (theMilliseconds2 / 1000))) / 10;
 
-/*
-    //print("theHour "+theHour);
-    if (preferences.tickSwitchPref.value === "tick") {
-		theTimer.interval = 1;
-    } else {
-		theTimer.interval = 0.1;
-    }
-
-	secondHand.rotation = (useSeconds * 6) % 360;
-*/
 
 
 	secondHand.rotation = (
@@ -392,102 +374,22 @@ function updateTime() {
 	}
 	buildVitality("Resources/images/panzer-dock.png", dockHour, dockMinutes);
 
-	dateText.data = String(monthDate);
-	if (dateText.data.length < 2) {
-		dateText.data = "0" + dateText.data;
+	dayOfMonthText.data = String(dayOfMonth);
+	if (dayOfMonthText.data.length < 2) {
+		dayOfMonthText.data = "0" + dayOfMonthText.data;
 	}
-	dateTextArea.data = dateText.data;
+	dayOfMonthTextArea.data = dayOfMonthText.data;
 
-	secondText.data = String(parseInt(useSeconds, 10));
-	if (secondText.data.length < 2) {
-		secondText.data = "0" + secondText.data;
+	monthText.data = String(theMonth);
+	if (monthText.data.length < 2) {
+		monthText.data = "0" + monthText.data;
 	}
-	secondTextArea.data = secondText.data;
+	monthTextArea.data = monthText.data;
 
-	if (swSecondHand.busy || swMinuteHand.busy || swHourHand.busy) {
-		return;
-	}
-
-	switch (stopWatchState) {	// state machine to handle stopwatch functions
-	case 0: // tracking main dials
-		swSecondHand.rotation = (useSeconds2 * 6) % 360;
-		swMinuteHand.rotation = (theMinutes2 * 6 + useSeconds2 / 10) % 360;
-		swHourHand.rotation = (theHour2 * 30 + theMinutes2 * 0.5) % 360;
-		break;
-	case 1: // zero stopwatch dials smoothly
-		rotateObject(swSecondHand, 0);
-		rotateObject(swMinuteHand, 0);
-		rotateObject(swHourHand, 0);
-		startButton.tooltip = "Press to start a timing run.";
-		stopWatchState = 2;
-		if (preferences.soundPref.value !== "disabled") {
-			play(counter, false);
-		}
-		break;
-	case 2: // waiting for user to click to start a timing run
-		break;
-	case 3: // start timing run - store the start time
-		startTime = theDate.getTime();
-		startButton.tooltip = "Press to pause the stopwatch dials. The timing run continues in the background.";
-		stopWatchState = 4;
-		break;
-	case 4: // timing - advancing the stopwatch dials
-		elapsedTime = theDate.getTime() - startTime;	// mS
-		swSecondHand.rotation = (elapsedTime * 0.006) % 360;
-		swMinuteHand.rotation = (elapsedTime * 0.0001) % 360;
-		swHourHand.rotation = (elapsedTime * 0.000001667) % 360;
-		break;
-	case 5: // stopwatch dials paused - display the time from start time to current time
-		secs = elapsedTime / 1000;	 // seconds
-		mins = Math.floor(secs / 60);
-		secs = secs - 60 * mins;
-		hours = Math.floor(mins / 60);
-		mins = mins - 60 * hours;
-		startButton.tooltip = "The elapsed time was " + displayTime(hours, mins, secs) + "." +
-				"\n\nPress to exit stopwatch mode. Press the lower button to continue the timing run.";
-		stopWatchState = 6;
-		break;
-	case 6: // waiting for user to click
-		break;
-	case 7: // move hands smoothly to track main hands again
-		rotateObject(swSecondHand, (useSeconds2 * 6 + 5) % 360);
-		rotateObject(swMinuteHand, (theMinutes2 * 6 + useSeconds2 / 10) % 360);
-		rotateObject(swHourHand, (theHour2 * 30 + theMinutes2 * 0.5) % 360);
-		startButton.tooltip = "Press to zero the stopwatch dials.";
-		stopWatchState = 0;
-		if (preferences.soundPref.value !== "disabled") {
-			play(counter, false);
-		}
-		break;
-	case 8: // continue the timing run - unpause the stopwatch dials smoothly
-		elapsedTime = theDate.getTime() - startTime;	// mS
-		rotateObject(swSecondHand, (elapsedTime * 0.006 + 5) % 360);
-		rotateObject(swMinuteHand, (elapsedTime * 0.0001) % 360);
-		rotateObject(swHourHand, (elapsedTime * 0.000001667) % 360);
-		startButton.tooltip = "Press to pause the stopwatch dials. The timing run continues in the background.";
-		if (preferences.soundPref.value !== "disabled") {
-			play(counter, false);
-		}
-		stopWatchState = 4;
-		break;
-	default:
-		if (preferences.soundPref.value !== "disabled") {
-			play(mistake, false);
-		}
-	}
 }
 
 startButton.onMouseDown = function (event) {
-	if (preferences.clockFaceSwitchPref.value === "standard") {
-		preferences.clockFaceSwitchPref.value = "stopwatch";
-		showFace();
-	}
 
-	if (event.altKey && (stopWatchState === 6)) {
-		stopWatchState = 8;
-	} else {
-		stopWatchState = (stopWatchState + 1) % 8;
-	}
 	this.opacity = 10;
 	updateTime();
 	if (preferences.soundPref.value !== "disabled") {
@@ -562,23 +464,7 @@ tickSwitch.onMouseUp = function () {
 };
 
 stopButton.onMouseDown = function () {
-	if (stopWatchState === 6) {
-		if (preferences.clockFaceSwitchPref.value === "standard") {
-			preferences.clockFaceSwitchPref.value = "stopwatch";
-			showFace();
-  		}
-		stopWatchState = 8;
-		if (preferences.soundPref.value !== "disabled") {
-			play(counter, false);
-		}
-		if (preferences.soundPref.value !== "disabled") {
-			play(ting, false);
-		}
-	} else {
-		if (preferences.soundPref.value !== "disabled") {
-			play(mistake, false);
-		}
-	}
+
 	this.opacity = 10;
 };
 
@@ -586,8 +472,8 @@ stopButton.onMouseUp = function () {
 	this.opacity = 255;
 };
 
-startButton.tooltip = "Press to zero the stopwatch dials.";
-stopButton.tooltip = "Press to continue the timing run. This button is active only when a timing run has been paused";
+startButton.tooltip = ".";
+stopButton.tooltip = "";
 
 //the following function needs to operate on both the background and background2 faces, as the ctrl event can only be caught by the
 //onMouseWheel itself on one object the event cannot be referred to by the key click on another object. The function would have to be duplicated
@@ -638,11 +524,11 @@ background.onMouseWheel = function (event) {					// was background2
 function setTextAreas() {
     var isMac = (system.platform === "macintosh");
 
-    dateText.visible = !isMac;
-    secondText.visible = !isMac;
+    dayOfMonthText.visible = !isMac;
+    monthText.visible = !isMac;
 
-	dateTextArea.visible = isMac;
-    secondTextArea.visible = isMac;
+	dayOfMonthTextArea.visible = isMac;
+    monthTextArea.visible = isMac;
 }
 //=====================
 //End function
