@@ -391,7 +391,8 @@ function updateTime() {
 startButton.onMouseDown = function (event) {
 
 	this.opacity = 10;
-	updateTime();
+    theTimer.ticking = true;
+	//updateTime();
 	if (preferences.soundPref.value !== "disabled") {
 		play(ting, false);
 	}
@@ -464,7 +465,7 @@ tickSwitch.onMouseUp = function () {
 };
 
 stopButton.onMouseDown = function () {
-
+    theTimer.ticking = false;
 	this.opacity = 10;
 };
 

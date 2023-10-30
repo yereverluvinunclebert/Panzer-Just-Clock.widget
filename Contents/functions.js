@@ -163,9 +163,9 @@ function settooltip() {
     print("settooltip");
     print("preferences.tooltipPref.value " + preferences.tooltipPref.value);
     if (preferences.tooltipPref.value === "enabled") {
-        startButton.tooltip = "Press to zero the stopwatch dials.";
-        stopButton.tooltip = "Press to continue the timing run. This button is active only when a timing run has been paused";
-        switchFacesButton.tooltip = "";	// "Press to switch the dial faces.";
+        startButton.tooltip = "Press to restart a stopped gauge.";
+        stopButton.tooltip = "Press to stop the gauge functionality.";
+        switchFacesButton.tooltip = "Non-functional button";	// "Press to switch the dial faces.";
         prefs.tooltip = "Press to open the widget preferences";
         helpButton.tooltip = "Press for a little help";
         pin.tooltip = "Press to lock the widget in place";
