@@ -4,6 +4,8 @@ Steampunk Desktop Just Clock  widget, written in Javascript and XML for the Yaho
 Widget (Konfabulator) Engine. Created for XP, Vista, Win7, 8, 10+ as well as the 
 Apple Mac.
 
+This widget is now deprecated and is retained for historical reasons only, it still works but time moves ever onward - please use the VB6 version instead that you will find here: https://github.com/yereverluvinunclebert/Panzer-JustClock-VB6
+
 ![justClock-image](https://github.com/yereverluvinunclebert/Panzer-Just-Clock.widget/assets/2788342/62d63250-69bd-4a8f-aea2-9df5258fbb58)
 
 An dieselpunk Panzer Clock widget - I created as a variation of the stopwatch 
